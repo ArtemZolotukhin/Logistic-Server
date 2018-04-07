@@ -9,6 +9,6 @@ package kpfu.logistic.server.service;
  *
  * @author rtmss
  */
-public interface TokenGenerator {
+public interface StringTokenGenerator {
     String generate();
 }

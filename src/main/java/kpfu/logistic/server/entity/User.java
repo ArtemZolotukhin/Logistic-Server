@@ -1,15 +1,19 @@
 package kpfu.logistic.server.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
+
+
+    public static final String ROLE_ADMIN = "ADMIN";
+    public static final String ROLE_DRIVER = "DRIVER";
 
     @Id
     @GeneratedValue(
@@ -37,10 +41,10 @@ public class User implements Serializable {
 
     @NotNull
     @Column(
-            name = "password_crypt",
+            name = "password_crypted",
             unique = false
     )
-    private String passwordCrypt;
+    private String passwordCrypted;
 
     @NotNull
     @Column(
@@ -54,6 +58,13 @@ public class User implements Serializable {
             unique = false
     )
     private String secondName;
+
+    @Column(
+            name = "role",
+            unique = true
+    )
+    private String role;
+
 
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -83,12 +94,12 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPasswordCrypt() {
-        return passwordCrypt;
+    public String getPasswordCrypted() {
+        return passwordCrypted;
     }
 
-    public void setPasswordCrypt(String passwordCrypt) {
-        this.passwordCrypt = passwordCrypt;
+    public void setPasswordCrypted(String passwordCrypted) {
+        this.passwordCrypted = passwordCrypted;
     }
 
     public String getFirstName() {
@@ -115,6 +126,14 @@ public class User implements Serializable {
         this.token = token;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,15 +142,16 @@ public class User implements Serializable {
         return Objects.equals(id, user.id) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(phoneNumber, user.phoneNumber) &&
-                Objects.equals(passwordCrypt, user.passwordCrypt) &&
+                Objects.equals(passwordCrypted, user.passwordCrypted) &&
                 Objects.equals(firstName, user.firstName) &&
-                Objects.equals(secondName, user.secondName);
+                Objects.equals(secondName, user.secondName) &&
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, email, phoneNumber, passwordCrypt, firstName, secondName);
+        return Objects.hash(id, email, phoneNumber, passwordCrypted, firstName, secondName, role);
     }
 }
 

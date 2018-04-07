@@ -3,6 +3,7 @@ package kpfu.logistic.server.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.*;
 //import org.springframework.http.MediaType;
 /*
@@ -35,11 +36,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
         registry.addViewController("/").setViewName("main");
     }
 
-    /*
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
-    }*/
+    }
 
 
 

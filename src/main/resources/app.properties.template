@@ -1,6 +1,6 @@
 jdbc.driver =org.postgresql.Driver
 
-jdbc.is_local=false
+jdbc.is_local=true
 jdbc.uri_local=jdbc:postgresql://localhost:5432/logistic_db
 db.user_local=logistic_admin
 db.password_local=12345678

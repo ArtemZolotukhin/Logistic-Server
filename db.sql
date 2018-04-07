@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS user_tokens CASCADE;
 
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO logistic_admin;
+
 CREATE TABLE users(
     id BIGSERIAL,
     phone_number VARCHAR(16),

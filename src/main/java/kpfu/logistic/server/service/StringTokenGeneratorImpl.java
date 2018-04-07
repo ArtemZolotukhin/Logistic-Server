@@ -15,7 +15,7 @@ import java.util.Random;
  * @author rtmss
  */
 @Service
-public class TokenGeneratorImpl implements TokenGenerator{
+public class StringTokenGeneratorImpl implements StringTokenGenerator {
 
     @Autowired
     private Crypter crypter;
