@@ -1,4 +1,4 @@
-package kpfu.logistic.server.sevice.validator;
+package kpfu.logistic.server.service.validator;
 
 public interface PhoneNumberValidator {
 

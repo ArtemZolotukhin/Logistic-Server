@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kpfu.logistic.server.sevice.validator;
+package kpfu.logistic.server.service;
 
 /**
  *
  * @author rtmss
  */
-public interface EmailValidator {
-    boolean validate(String email);
+public interface Crypter {
+    String crypt(String string);
 }
