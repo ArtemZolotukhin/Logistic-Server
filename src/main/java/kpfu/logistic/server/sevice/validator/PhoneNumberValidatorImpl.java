@@ -5,6 +5,6 @@ public class PhoneNumberValidatorImpl implements PhoneNumberValidator {
     @Override
     public boolean validate(String phoneNumber) {
         //TODO
-        return false;
+        return true;
     }
 }
