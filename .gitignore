@@ -1,3 +1,9 @@
 target/
 /req_scr
-.idea
+# Java class files
+*.class
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
