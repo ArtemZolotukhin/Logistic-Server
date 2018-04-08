@@ -13,6 +13,7 @@ public class UserTokenToLoginResultConverterImpl implements UserTokenToLoginResu
         LoginResult loginResult = new LoginResult();
         loginResult.setToken(userToken.getToken());
         loginResult.setUserId(Long.toString(userToken.getUser().getId()));
+        loginResult.setRole(userToken.getUser().getRole());
 
         return loginResult;
     }
