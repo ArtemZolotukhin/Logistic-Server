@@ -11,6 +11,8 @@ CREATE TABLE users(
     password_crypted VARCHAR(64),
     first_name VARCHAR(32),
     second_name VARCHAR(32),
+    country VARCHAR(32),
+    city VARCHAR(32,)
     CONSTRAINT pk_users PRIMARY KEY (id)
 );
 

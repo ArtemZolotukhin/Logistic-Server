@@ -65,6 +65,18 @@ public class User implements Serializable {
     )
     private String role;
 
+    @Column(
+            name = "country",
+            unique = true
+    )
+    private String country;
+
+    @Column(
+            name = "city",
+            unique = true
+    )
+    private String city;
+
 
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -134,6 +146,22 @@ public class User implements Serializable {
         this.role = role;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -145,13 +173,15 @@ public class User implements Serializable {
                 Objects.equals(passwordCrypted, user.passwordCrypted) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(secondName, user.secondName) &&
-                Objects.equals(role, user.role);
+                Objects.equals(role, user.role) &&
+                Objects.equals(country, user.country) &&
+                Objects.equals(city, user.city);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, email, phoneNumber, passwordCrypted, firstName, secondName, role);
+        return Objects.hash(id, email, phoneNumber, passwordCrypted, firstName, secondName, role, country, city);
     }
 }
 
