@@ -13,11 +13,5 @@ public interface StorageProviderService {
      */
     Set<Storage> nearestTo(String unformattedAddress);
 
-    /**
-     *
-     * @param latLng
-     * @return empty Set (with size = 0) if not found
-     */
-    Set<Storage> nearestTo(LatLng latLng);
 
 }
