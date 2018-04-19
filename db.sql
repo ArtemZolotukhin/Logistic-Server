@@ -30,8 +30,12 @@ CREATE TABLE storages(
     dependency BIGINT,
     lat REAL,
     lon REAL,
+    country VARCHAR(32),
+    city VARCHAR(32),
     CONSTRAINT pk_storages PRIMARY KEY (id),
     CONSTRAINT fk_storages_storages FOREIGN KEY (dependency) REFERENCES storages(id) ON DELETE SET NULL
 );
 
 INSERT INTO users (phone_number, email, role, password_crypted, first_name, second_name, country, city) VALUES ('12345678901', 'admin@mail.com', 'ADMIN', '654de93590ab375d18afa10459c40a48', 'Ad', 'Min', 'Russia', 'Kazan');
+INSERT INTO storages (name, address, lat, lon, country, city) VALUES ('Test point', 'Kakaya-to ylitsa', 55.788, 49.122, 'Russia', 'Kazan');
+
