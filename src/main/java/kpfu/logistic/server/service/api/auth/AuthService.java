@@ -1,5 +1,6 @@
-package kpfu.logistic.server.service.api;
+package kpfu.logistic.server.service.api.auth;
 
+import kpfu.logistic.server.entity.AcceptorInfo;
 import kpfu.logistic.server.entity.User;
 import kpfu.logistic.server.entity.UserToken;
 import kpfu.logistic.server.service.api.exceptions.InvalidFormException;
@@ -31,6 +32,13 @@ public interface AuthService {
 
     UserToken login(LoginForm loginForm) throws InvalidFormException;
 
+    /**
+     *
+     * @param login
+     * @return null if not found
+     */
+    User getByLogin(String login);
 
+    AcceptorInfo getAcceptorInfoByUser(User user);
 
 }

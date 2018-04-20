@@ -1,12 +1,14 @@
-package kpfu.logistic.server.service.api;
+package kpfu.logistic.server.service.api.auth;
 
 
+import kpfu.logistic.server.entity.AcceptorInfo;
 import kpfu.logistic.server.entity.User;
 import kpfu.logistic.server.entity.UserToken;
 import kpfu.logistic.server.repository.UserRepository;
 import kpfu.logistic.server.repository.UserTokenRepository;
 import kpfu.logistic.server.service.Crypter;
 import kpfu.logistic.server.service.LoginTypeRecognizer;
+import kpfu.logistic.server.service.PasswordGenerator;
 import kpfu.logistic.server.service.StringTokenGenerator;
 import kpfu.logistic.server.service.api.exceptions.InvalidFormException;
 import kpfu.logistic.server.service.api.exceptions.TokenNotFoundException;
@@ -40,6 +42,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Autowired
     private Crypter crypter;
+
 
     @Override
     public User getUserByToken(String token) throws UserNotFoundException, TokenNotFoundException {
@@ -108,6 +111,25 @@ public class AuthServiceImpl implements AuthService {
         throw new InvalidFormException();
 
     }
+
+    @Override
+    public User getByLogin(String login) {
+        switch (loginTypeRecognizer.recognize(login)) {
+            case LoginTypeRecognizer.TYPE_EMAIL:
+                return userRepository.findOneByEmail(login);
+            case LoginTypeRecognizer.TYPE_PHONE_NUMBER:
+                return userRepository.findOneByPhoneNumber(login);
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public AcceptorInfo getAcceptorInfoByUser(User user) {
+        AcceptorInfo acceptorInfo = userRepository.acceptorInfoByUser(user);
+        return acceptorInfo;
+    }
+
 
     private UserToken createOrUpdateUserToken(User user) {
         UserToken token = user.getToken();

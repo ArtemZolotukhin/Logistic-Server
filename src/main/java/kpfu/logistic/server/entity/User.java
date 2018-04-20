@@ -14,6 +14,7 @@ public class User implements Serializable {
 
     public static final String ROLE_ADMIN = "ADMIN";
     public static final String ROLE_DRIVER = "DRIVER";
+    public static final String ROLE_ACCEPTOR = "ACCEPTOR";
 
     @Id
     @GeneratedValue(

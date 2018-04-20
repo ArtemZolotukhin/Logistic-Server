@@ -15,7 +15,7 @@ public class PhoneNumberValidatorImpl implements PhoneNumberValidator {
             return false;
         }
 
-        Pattern p = Pattern.compile("^[8]{1}[0-9]{10}$");
+        Pattern p = Pattern.compile("^[0-9]{11}$");
         Matcher m = p.matcher(phoneNumber);
 
         return m.matches();
