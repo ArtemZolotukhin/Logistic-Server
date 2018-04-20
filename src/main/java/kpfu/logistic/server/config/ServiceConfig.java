@@ -31,6 +31,6 @@ public class ServiceConfig {
     @Autowired
     @Bean
     public CountryCityGeocoderService geoService(GeocodePojoResultParser geocodePojoResultParser) {
-        return new GoogleCountryCityGeocoderService("AIzaSyBh4C18yZ5ayi3f07lJOf-I4Wjz5U9uaGc", "https://maps.googleapis.com/maps/api/geocode/", geocodePojoResultParser);
+        return new GoogleCountryCityGeocoderService(this.env.getProperty("geocoder_api_key"), this.env.getProperty("geocoder_base_url"), geocodePojoResultParser);
     }
 }
